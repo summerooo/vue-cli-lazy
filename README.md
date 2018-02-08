@@ -27,4 +27,15 @@ npm run e2e
 npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+vue2轻量的全家桶
+
+具体内容 基于官方vue-cli 脚手架的 基本完善使用 
+
+开发模式和生产模式中代理文件true false判断,
+对router的封装， 
+对axios的封装使用， 
+对公用组件 和 局部组件的 文件分配，
+和对 vuex 中内置函数进行 的文件分配使用。
+等等等... 
+
+以及一些基本开发项目所必要模块 。 轻量的脚手架。
