@@ -7,7 +7,10 @@ import axios from './api'
 import store from './store'
 
 import gc from './components/globalComponents'
-
+// 引入svg组件
+import iconSvg from './components/icon.vue'
+// 全局注册icon-svg
+Vue.component('iconSvg', iconSvg)
 Vue.config.productionTip = false
 Vue.use(gc)
 /* eslint-disable no-new */

@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <iconSvg icon-class="ts" style="color: red; font-size: 20px;"></iconSvg>
     <h1>{{ msg }}</h1>
     123123123
     {{count}}
@@ -11,6 +12,8 @@
 </template>
 
 <script>
+import '../assets/icons/ts.svg'
+
 import {login} from '../api/a/a'
 export default {
   name: 'HelloWorld',

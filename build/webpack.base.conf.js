@@ -3,10 +3,17 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+// 设置svg目录
+const svgSrc = 'src/assets/icons'
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
+// // 匹配返回所有模块
+// const requireAll = requireContext =>  requireContext.keys().map(requireContext)
+// // 导入全部svg
+// const req = require.context(resolve(svgSrc), false, /\.svg$/)
+// requireAll(req)
 
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
@@ -41,6 +48,15 @@ module.exports = {
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
+      // 配置 svg-sprite-loader，加入处理 svg 的 loader：
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [resolve(svgSrc)],
+        options: {
+          symbolId: 'icon-[name]'
+        }
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -53,6 +69,8 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        // loader 设置拒绝目录
+        exclude: [resolve(svgSrc)],
         loader: 'url-loader',
         options: {
           limit: 10000,
