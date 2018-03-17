@@ -30,17 +30,22 @@ npm test
 vue2轻量的全家桶
 
 具体内容 基于官方vue-cli 脚手架的 基本完善使用 
-
-开发模式和生产模式中代理文件true false判断,
+# ajax代理
+开发模式和生产模式中dev.js文件
+true false判断
+# router
 对router的封装， 
-对axios的封装使用， 
+#axios
+对axios的封装使用，
 对公用组件 和 局部组件的 文件分配，
+# vuex
 和对 vuex 中内置函数进行 的文件分配使用。
 打包过滤注释
-加上svg 的引入， 当然是手动引入，手写尴尬。不知道为什么我的require.context 是 unfinded , 不过是封装了全局组件。
+# svg引入
+加上svg 的引入， 当然是手动引入，手写尴尬。<br>
+不知道为什么我的require.context 是 unfinded , 不过是封装了全局组件。
 虽然手动辛苦点，但是依然实现了懒加载引入svg。路径可以随便指定 在webpack.base.conf.js 文件中 svgSrc 常量。
 icon 在那个页都可以引入 然后传给全局iconSvg, 当然名字是随便起的。svg文件id 默认是svg文件名字。
-
 
 
 等等等... 
