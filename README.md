@@ -28,7 +28,7 @@ npm test
 ```
 ## content
 
-具体内容 基于官方vue-cli 脚手架的 单页面配置使用 
+具体内容 基于vue-cli 基本需求的通用模板 单页面配置使用 
 ### gzip
 build默认开启
 ### ajax代理
