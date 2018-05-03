@@ -15,6 +15,7 @@ switch (what) {
     break
   case 1:
     apiUrl = host = ''
+    isDev = false
     break
   case 2:
     apiUrl = host
