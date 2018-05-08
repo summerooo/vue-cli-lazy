@@ -19,6 +19,7 @@ switch (what) {
     break
   case 2:
     apiUrl = host
+    isDev = false
     isApp = true
     break
 }
