@@ -32,8 +32,8 @@ npm test
 ### gzip
 build默认开启
 ### ajax代理
-开发模式和生产模式中dev.js文件
-true false判断
+开发模式，生产模式 app中dev.js文件
+0 1 2判断
 ### router
 对router的文件中路由的懒加载使用
 ### axios
