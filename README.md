@@ -54,7 +54,8 @@ svg loader配置等等
 icon 在那个页都可以引入 然后传给全局iconSvg, 当然名字是随便起的。svg文件id 默认是svg文件名字。<br>
 如果遇到font-size失效 和 更改颜色无效的话 ，<br>
 在 iconSvg组件class里加入font-size:100%;<br>
-查看下载的.svg文件中是否有fill属性，有的话删掉.(颜色)
+查看下载的.svg文件中是否有fill属性，有的话删掉.(颜色) 当然浏览器缓存也会影响变化,(可以试试清理强制刷新)
+
 
 
 等等等... 
