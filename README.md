@@ -52,6 +52,9 @@ svg loader配置等等
 不知道为什么我的require.context 是 unfinded , 不过是封装了全局组件。<br>
 虽然手动辛苦点，但是依然实现了懒加载引入svg。路径可以随便指定 在webpack.base.conf.js 文件中 svgSrc 常量。<br>
 icon 在那个页都可以引入 然后传给全局iconSvg, 当然名字是随便起的。svg文件id 默认是svg文件名字。<br>
+如果遇到font-size失效 和 更改颜色无效的话 ，<br>
+在 iconSvg组件class里加入font-size:100%;<br>
+查看下载的.svg文件中是否有fill属性，有的话删掉.(颜色)
 
 
 等等等... 
