@@ -56,8 +56,9 @@ icon 在那个页都可以引入 然后传给全局iconSvg, 当然名字是随�
 在 iconSvg组件class里加入font-size:100%;<br>
 查看下载的.svg文件中是否有fill属性，有的话删掉.(颜色) 当然浏览器缓存也会影响变化,(可以试试清理强制刷新)
 
-##移动端
-###适配方案
+## 移动端
+
+### 适配方案
 ``` bash
 npm i postcss-aspect-ratio-mini postcss-px-to-viewport postcss-write-svg postcss-cssnext postcss-viewport-units cssnano --S
 ```
@@ -101,7 +102,8 @@ module.exports = {
   }
 }
 ```
-###骨架屏
+### 骨架屏
+
 [详情可以看](https://juejin.im/post/5b07e09d6fb9a07aac24e428)<br>
 通过class切换的方式实现。<br>
 [demo演示](https://jsfiddle.net/liuliuliu/0hgmvt2y/19/)<br>
