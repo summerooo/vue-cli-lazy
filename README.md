@@ -1,4 +1,4 @@
-# 刘嘉亮
+# liuliuliu
 
 > A Vue.js project
 
@@ -32,7 +32,7 @@ npm test
 ### gzip
 build默认开启
 ### ajax代理
-开发模式，生产模式 app中dev.js文件
+开发模式，生产模式 app模式 app中dev.js文件 <br>
 0 1 2判断
 ### router
 对router的文件中路由的懒加载使用
@@ -104,9 +104,9 @@ module.exports = {
 ```
 ### 骨架屏
 
-[详情可以看](https://juejin.im/post/5b07e09d6fb9a07aac24e428)<br>
-通过class切换的方式实现。<br>
-[demo演示](https://jsfiddle.net/liuliuliu/0hgmvt2y/19/)<br>
+[详情可以看](https://juejin.im/post/5b07e09d6fb9a07aac24e428)<br><br>
+通过class切换的方式实现。<br><br>
+[demo演示](https://jsfiddle.net/liuliuliu/0hgmvt2y/19/)<br><br>
 等等等... 
 
 以及一些基本开发项目所必要模块 。 轻量的脚手架。
