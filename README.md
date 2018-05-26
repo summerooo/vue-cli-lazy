@@ -58,7 +58,7 @@ icon 在那个页都可以引入 然后传给全局iconSvg, 当然名字是随�
 
 ## 移动端
 
-### 适配方案
+### 适配方案(postcss)
 [学习大佬,大佬详细解说](https://www.w3cplus.com/mobile/vw-layout-in-vue.html)
 ``` bash
 npm i postcss-aspect-ratio-mini postcss-px-to-viewport postcss-write-svg postcss-cssnext postcss-viewport-units cssnano --S
