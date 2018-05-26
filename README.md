@@ -1,4 +1,4 @@
-# cc
+# 刘嘉亮
 
 > A Vue.js project
 
@@ -56,8 +56,55 @@ icon 在那个页都可以引入 然后传给全局iconSvg, 当然名字是随�
 在 iconSvg组件class里加入font-size:100%;<br>
 查看下载的.svg文件中是否有fill属性，有的话删掉.(颜色) 当然浏览器缓存也会影响变化,(可以试试清理强制刷新)
 
-
-
+##移动端
+###适配方案
+``` bash
+npm i postcss-aspect-ratio-mini postcss-px-to-viewport postcss-write-svg postcss-cssnext postcss-viewport-units cssnano --S
+```
+``` javascript
+  // package.json 中
+  {
+    "cssnano": "^3.10.0",
+    "postcss-aspect-ratio-mini": "0.0.2",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-px-to-viewport": "0.0.3",
+    "postcss-viewport-units": "^0.1.4",
+    "postcss-write-svg": "^3.0.1",
+  }
+```
+``` javascript
+// 在 .postcssrc.js 中设置
+module.exports = {
+  "plugins": {
+    "postcss-import": {},
+    "postcss-url": {},
+    "postcss-aspect-ratio-mini": {},
+    "postcss-write-svg": {
+      utf8: false
+    },
+    "postcss-cssnext": {},
+    "postcss-px-to-viewport": {
+      viewportWidth: 750, // 视窗的宽度，对应的是我们设计稿的宽度，一般是750
+      viewportHeight: 1334, // 视窗的高度，根据750设备的宽度来指定，一般指定1334
+      unitPrecision: 3, // 指定`px`转换为视窗单位值的小数位数（很多时候无法整除）
+      viewportUnit: 'vw', // 指定需要转换成的视窗单位，建议使用vw
+      selectorBlackList: ['.ignore', '.hairlines'], // 指定不转换为视窗单位的类，可以自定义，可以无限添加,建议定义一至两个通用的类名
+      minPixelValue: 1, // 小于或等于`1px`不转换为视窗单位，你也可以设置为你想要的值
+      mediaQuery: false // 允许在媒体查询中转换`px`
+    },
+    "postcss-viewport-units": {},
+    "cssnano": {
+      preset: "advanced",
+      autoprefixer: false,
+      "postcss-zindex": false
+    }
+  }
+}
+```
+###骨架屏
+[详情可以看](https://juejin.im/post/5b07e09d6fb9a07aac24e428)<br>
+通过class切换的方式实现。<br>
+[demo演示](https://jsfiddle.net/liuliuliu/0hgmvt2y/19/)<br>
 等等等... 
 
 以及一些基本开发项目所必要模块 。 轻量的脚手架。
