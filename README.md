@@ -33,7 +33,7 @@ npm test
 build默认开启
 ### ajax代理
 开发模式，生产模式 app模式 app中dev.js文件 <br>
-0 1 2判断
+开发和生产 无需修改文件， app 的话 把文件里 gzip = false,因为在cordova中 gzip不需要
 ### router
 对router的文件中路由的懒加载使用
 ### axios

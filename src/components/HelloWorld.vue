@@ -14,7 +14,8 @@
 <script>
 import '../assets/icons/ts.svg'
 
-import {login} from '../api/a/a'
+import { login, hotMapData } from '../api/a/a.js'
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -30,8 +31,6 @@ export default {
   methods: {
     async a () {
       this.msg = this.msg + '000000'
-      let a = await login()
-      console.log(a)
       this.$store.state.count = 1000
       // this.$store.commit('increment', {
       //   number: 10
@@ -40,11 +39,18 @@ export default {
         number: 10
       })
       console.log(this.$store.state.count)
+    },
+    async hotMap () {
+      let lo = await login({})
+      console.log(lo)
+      let hpd = await hotMapData()
+      console.log(hpd)
     }
   },
   created () {
     console.log(this)
     this.a()
+    this.hotMap()
   }
 }
 </script>

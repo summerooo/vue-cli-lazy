@@ -1,15 +1,14 @@
 import axios from 'axios'
-import Qs from 'qs'
-import {apiUrl} from '../dev'
-axios.defaults.baseURL = apiUrl
+// import Qs from 'qs'
+// axios.defaults.baseURL = apiUrl
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.timeout = 100000
 
 axios.interceptors.request.use(
   config => {
-    if (config.method === 'post') {
-      config.data = Qs.stringify(config.data)
-    }
+    // if (config.method === 'post') {
+    //   config.data = Qs.stringify(config.data)
+    // }
     return config
   },
   err => {

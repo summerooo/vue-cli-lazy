@@ -1,8 +1,8 @@
 'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
-const host = require('../src/dev').host
-const isDev = require('../src/dev').isDev
+const proxyTable = require('../src/dev').proxyTable
+const gzip = require('../src/dev').gzip
 const path = require('path')
 module.exports = {
   dev: {
@@ -10,15 +10,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api': {
-        target: host,
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': '/'
-        }
-      }
-    },
+    proxyTable: proxyTable,
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -64,7 +56,7 @@ module.exports = {
      * Source Maps
      */
 
-    productionSourceMap: isDev,
+    productionSourceMap: false,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 
@@ -72,7 +64,7 @@ module.exports = {
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
-    productionGzip: true,
+    productionGzip: gzip,
     productionGzipExtensions: ['js', 'css'],
 
     // Run the build command with an extra argument to

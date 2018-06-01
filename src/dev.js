@@ -1,31 +1,35 @@
-// 0 dev 1 build 2 App
-let what = 0
-// what = 1
-// what = 2
-// axios 的 baseURL
-let isDev = true
-let isApp = false
-let apiUrl = ''
-// 代理target
-let host = 'http://test.klqzz.top/'
 
-switch (what) {
-  case 0:
-    apiUrl = '/api'
-    break
-  case 1:
-    apiUrl = host = ''
-    isDev = false
-    break
-  case 2:
-    apiUrl = host
-    isDev = false
-    isApp = true
-    break
+// 是APP是 gzip 选用 false
+let gzip = true
+// gzip = false
+let host = 'http://www.udao56.com/thinkphp5/index.php/tms'
+// ----------- 以下默认
+let proxyTable = {
+  '/api': {
+    target: host,
+    changeOrigin: true,
+    pathRewrite: {
+      '^/api': '/'
+    }
+  },
+  // 仅测试可用，因build 后放到服务器环境是没有代理
+  '/hot': {
+    target: 'http://echarts.baidu.com/',
+    changeOrigin: true,
+    pathRewrite: {
+      '^/hot': '/'
+    }
+  }
+}
+let api = '/api'
+if (process.env.NODE_ENV === 'development') {
+  api = '/api'
+} else {
+  api = ''
+  if (!gzip) api = host
 }
 module.exports = {
-  isDev,
-  isApp,
-  host,
-  apiUrl
+  proxyTable,
+  gzip,
+  api
 }
