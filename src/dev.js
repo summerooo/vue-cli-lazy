@@ -1,16 +1,18 @@
+// 开发环境下无需更改，一切默认就好，生产环境 如果是放到java node 或 php 指定目录的话,
+// 并且无代理，所以只能是服务器地址下的ajax，否则会跨域
+// 为了解决多个不同访问方法，采用nginx的方式并且nginx 的代理方式 与 cli里代理无异。
+let nginx = false
+// nginx = true
+// 是APP是 gzip 选用 false
+let gzip = true
+// gzip = false
 // ----------- 以下默认
 //  nginx 和 gzip
 //  gzip 是 因为cordova app 不支持gzip
 // ------------
 // 服务主要地址
 let host = 'http://www.udao56.com/thinkphp5/index.php/tms'
-// Is your service nginx  和 npm run dev 都是代理方式
-let nginx = false
-nginx = true
-// 是APP是 gzip 选用 false
-let gzip = true
-// gzip = false
-// ----------------------------------------------------
+// --------------------------------------------------------------------------------------------------------
 let proxyTable = {
   '/api': {
     target: host,
@@ -44,13 +46,20 @@ for (let i in proxyTable) {
   proxyTableApi[i.replace(/\//, '')] = i
 }
 // build 后 无代理 放到指定服务目录下 无代理 所以不能用 /hot...
-if (process.env.NODE_ENV !== 'development') {
-  if (!nginx) {
+if (process.env.NODE_ENV === 'production') {
+  if (gzip) {
+    if (!nginx) {
+      for (let i in proxyTable) {
+        proxyTableApi[i.replace(/\//, '')] = ''
+      }
+    }
+  } else {
     for (let i in proxyTable) {
-      proxyTableApi[i.replace(/\//, '')] = ''
+      proxyTableApi[i.replace(/\//, '')] = proxyTable[i].target
     }
   }
 }
+console.log(proxyTableApi)
 module.exports = {
   proxyTable,
   proxyTableApi,

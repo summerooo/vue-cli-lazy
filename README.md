@@ -33,8 +33,12 @@ npm test
 build默认开启
 ### ajax代理
 开发模式，生产模式 app模式 app中dev.js文件 <br>
-开发和生产 无需修改文件， app 的话 把文件里 gzip = false,因为在cordova中 gzip不需要<br>
-新增 nginx代理， 前后端分离必备。 具体详情可看 src 中 dev.js文件
+开发和生产 无需修改文件， app 的话 把 src 中 dev.js文件里 gzip = false,因为在cordova中 gzip不需要<br>
+如果是放到java node 或 php 指定目录的话, 开发环境下无需更改，一切默认就好，生产环境<br>
+但是因为是无代理，所以只能是服务器地址下的ajax，否则会跨域<br><br>
+为了解决多个不同访问方法，采用nginx的方式并且nginx 的代理方式 与 cli里代理无异。<br>
+nginx代理， 前后端分离必备。 具体详情可看 src 中 dev.js文件<br>
+nginx 配置文件nginx.conf可在 src 中 static 里查看
 ### router
 对router的文件中路由的懒加载使用
 ### axios
