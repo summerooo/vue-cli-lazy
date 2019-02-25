@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { login } from '../api/what/test.js'
+import { agreement } from '../api/what/test.js'
 export default {
   data() {
     return {
@@ -18,7 +18,7 @@ export default {
   methods: {
    async aa () {
      console.log('11111')
-     let l = await login()
+     let l = await agreement()
      console.log(l)
      this.c = [{c: 3}]
    }

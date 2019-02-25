@@ -1,5 +1,7 @@
 import axios from '../index'
+const { api } = require('@/dev')
 
-export const login = data => {
-  return axios.get('/api/auth/login', data)
+// 获取各种协议
+export const agreement = data => {
+  return axios.post(`${api}/agreement`, data)
 }

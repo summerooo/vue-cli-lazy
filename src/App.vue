@@ -8,20 +8,24 @@
 <script>
 export default {
   created() {
+    const nu = navigator.userAgent
+    const models = [ 'Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod' ]
     // 设备
-    for (let d of ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod']) {
-      if (navigator.userAgent.includes(d)) {
+    if (!sessionStorage.getItem('device')) for (let d of models) {
+      if (nu.includes(d)) {
+        sessionStorage.setItem('device', d)
         this.device = d
         break
       }
     }
     // 内核
     for (let i of ['chrome', 'firefox', 'webkit']) {
-      if (navigator.userAgent.toLowerCase().includes(i)) {
+      if (nu.toLowerCase().includes(i)) {
         this.kernel = i
         break
       }
     }
+    if (nu.toLowerCase().match(/MicroMessenger/i)) console.log('in wx')
   },
   data () {
     return {

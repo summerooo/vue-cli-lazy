@@ -2,6 +2,8 @@
 const CompressionPlugin = require('compression-webpack-plugin')
 // drop console
 const TerserPlugin = require('terser-webpack-plugin')
+const proxy = require('./src/dev').proxy
+
 module.exports = {
 	runtimeCompiler: undefined,
 	productionSourceMap: false,
@@ -28,25 +30,29 @@ module.exports = {
 							}
 						})
 					]
-				}
+				},
+        // 配置如何展示性能提示。例如,如果一个资源超过 250kb,webpack 会对此输出一个警告来通知你
+        performance: {
+          hints: false
+        }
 			}
 		}
 	},
 
 	devServer: {
-		proxy: {
-			'/api': {
-				target: 'http://192.168.10.104:8090',
-				pathRewrite: {
-					'^/api': '/'
-				}
-			}
-		}
+    port: 8008,
+		proxy: proxy
 	},
-
-	baseUrl: './',
+  // history  ->  '/'    hash  ->  './' 
+	baseUrl: undefined,
 	outputDir: undefined,
 	assetsDir: undefined,
 	parallel: undefined,
-	css: undefined
+	css: {
+    loaderOptions: {
+      sass: {
+        data: '@import \'@/assets/css/variable.scss\';'
+      }
+    }
+  }
 }
