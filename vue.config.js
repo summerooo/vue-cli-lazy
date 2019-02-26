@@ -26,7 +26,11 @@ module.exports = {
 									drop_console: true,
 									warnings: false,
 									drop_debugger: true
-								}
+								},
+                output:{
+                  // 去掉注释内容
+                  comments: false
+                }
 							}
 						})
 					]
