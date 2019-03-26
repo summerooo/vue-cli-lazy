@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    {{device}}
-    {{kernel}}
     <router-view/>
   </div>
 </template>
