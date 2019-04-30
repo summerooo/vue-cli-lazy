@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    {{device}}
-    {{kernel}}
     <router-view/>
   </div>
 </template>
@@ -37,4 +35,24 @@ export default {
 </script>
 
 <style lang="scss">
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#app,
+html,
+body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration:none;
+}
 </style>
