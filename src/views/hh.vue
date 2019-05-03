@@ -42,7 +42,7 @@ export default {
           this.map[x].push(y)
           // 生成地图坐标
           this.$set(this.activeCoordinate, `${x}-${y}`, false)
-          this.$set(this.coordinate, `${x}-${y}`, ' ')
+          this.$set(this.coordinate, `${x}-${y}`, '')
         }
       }
       // 埋波雷
@@ -61,29 +61,23 @@ export default {
     isMine (xy) {
       return this.mineCoordinate.includes(xy)
     },
-    clickCell (xy) {
-      if (this.isMine(xy)) return console.log('踩到了')
+    clickCell (xys) {
+      if (this.isMine(xys)) return console.log('踩到了')
       let spread = cell => {
-        console.log('???')
-        if (this.coordinate[cell]) this.$set(this.activeCoordinate, cell, true)
+        console.log(this.coordinate[cell], '?')
+        if (this.coordinate[cell]) this.$set(this.activeCoordinate, cell, true )
         let xy = cell.split('-')
         for (let i = +xy[0] - 1; i <= +xy[0] + 1; i++) {
           for (let j = +xy[1] - 1; j <= +xy[1] + 1; j++) {
-            if (this.coordinate[`${i}-${j}`] === ' ') {
-              if (!this.activeCoordinate[`${i}-${j}`]) {
-                this.$set(this.activeCoordinate, `${i}-${j}`, true)
-                spread(`${i}-${j}`)
-              }
+            console.log(this.coordinate[`${i}-${j}`] === '')
+            if (!this.activeCoordinate[`${i}-${j}`]) {
+              this.$set(this.activeCoordinate, `${i}-${j}`, true)
+              if (this.coordinate[`${i}-${j}`] === '') spread(`${i}-${j}`)
             }
-            // if (this.coordinate[`${i}-${j}`] === ' ') {
-            //   return spread(`${i}-${j}`)
-            // }
-            // // this.$set(this.activeCoordinate, `${i}-${j}`, true)
-            // if (!this.activeCoordinate) spread(`${i}-${j}`)
           }
         }
       }
-      spread(xy)
+      spread(xys)
     },
     surroundingMinesCount (cell) {
       let xy = cell.split('-')
