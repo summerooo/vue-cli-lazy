@@ -70,7 +70,7 @@ export default {
         for (let i = +xy[0] - 1; i <= +xy[0] + 1; i++) {
           for (let j = +xy[1] - 1; j <= +xy[1] + 1; j++) {
             console.log(this.coordinate[`${i}-${j}`] === '')
-            if (!this.activeCoordinate[`${i}-${j}`]) {
+            if (!this.activeCoordinate[`${i}-${j}`] && !this.isMine(`${i}-${j}`)) {
               this.$set(this.activeCoordinate, `${i}-${j}`, true)
               if (this.coordinate[`${i}-${j}`] === '') spread(`${i}-${j}`)
             }
