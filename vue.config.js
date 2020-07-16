@@ -48,7 +48,7 @@ module.exports = {
 		proxy: proxy
 	},
   // history  ->  '/'    hash  ->  './' 
-	baseUrl: undefined,
+	publicPath: undefined,
 	outputDir: undefined,
 	assetsDir: undefined,
 	parallel: undefined,
