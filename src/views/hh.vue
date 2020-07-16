@@ -103,15 +103,15 @@ export default {
   justify-content: center;
   align-items: center;
   td {
-    width: 33px;
-    height: 33px;
+    width: $large;
+    height: $large;
     text-align: center;
-    line-height: 33px;
+    line-height: $large;
     border: 1px solid gray;
     background: lightgray;
   }
   .active {
-    background: lightcoral;
+    background: $red;
   }
 }
 </style>
