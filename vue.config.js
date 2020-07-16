@@ -47,8 +47,8 @@ module.exports = {
     port: 8008,
 		proxy: proxy
 	},
-  // history  ->  '/'    hash  ->  './' 
-	baseUrl: undefined,
+  // history  ->  '/'    hash  ->  './'
+  //	baseUrl: undefined,
 	outputDir: undefined,
 	assetsDir: undefined,
 	parallel: undefined,
