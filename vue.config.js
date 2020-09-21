@@ -3,6 +3,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 // drop console
 const TerserPlugin = require('terser-webpack-plugin')
 const proxy = require('./src/dev').proxy
+const path = require('path')
 
 module.exports = {
 	runtimeCompiler: undefined,
@@ -47,16 +48,30 @@ module.exports = {
     port: 8008,
 		proxy: proxy
 	},
+<<<<<<< HEAD
   // history  ->  '/'    hash  ->  './' 
 	publicPath: undefined,
+=======
+  // history  ->  '/'    hash  ->  './'
+  publicPath: undefined,
+>>>>>>> master
 	outputDir: undefined,
 	assetsDir: undefined,
 	parallel: undefined,
-	css: {
-    loaderOptions: {
-      sass: {
-        data: '@import \'@/assets/css/variable.scss\';'
-      }
+	// css: {
+  //   loaderOptions: {
+  //     sass: {
+  //       data: '@import \'@/assets/css/variable.scss\';'
+  //     }
+  //   }
+  // },
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'scss',
+      patterns: [
+        // '@import \'@/assets/css/variable.scss\';'
+        path.resolve(__dirname, 'src/assets/css/*.scss')
+      ]
     }
   }
 }
