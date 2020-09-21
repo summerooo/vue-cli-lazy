@@ -20,6 +20,7 @@ yarn run lint
 
 #views目录结构(根据多需求的router 设计)
 如单独页面有滚动条，或不需要滚动条,可以用 position 中 relative 和 absolute 来控制
+```
 |-- views
     |-- layout.vue (相同布局公共组件,可有多个layout，根据需求而定)
     |-- login.vue
@@ -30,8 +31,10 @@ yarn run lint
     |-- mine
         |-- index.vue (中转文件，为当前目录其他文件的公共组件)
         |-- xxx.vue
+```
 
 #components目录结构(结构与views 命名规则相同)
+```
 |-- components
     |-- common
         |-- xxx.vue
@@ -41,14 +44,18 @@ yarn run lint
         |-- xxx.vue
     |-- mine
         |-- xxx.vue
+```
 
 #api目录结构(结构与views 命名规则相同)
+```
 |-- api
     |-- common
         |-- xxx.js
     |-- login
         |-- xxx.js
+```
 #assets目录结构(结构与views 命名规则相同)
+```
 |-- assets
     |-- css
         |-- xxx.scss
@@ -56,17 +63,21 @@ yarn run lint
         |-- xxx.css
     |-- images
         |-- xxx.png
-
+```
 
 #router目录结构(变量与views命名规则相同,可利用require.context获取views文件目录自动生成路由，默认静态设置,具体参看router 文件夹)
+```
 |-- router
     |-- index.js
     |-- routes.js
+```
 
 
 #store目录结构
+```
 |-- sotre
     |-- index.js
+```
 
 
 #dev.js
