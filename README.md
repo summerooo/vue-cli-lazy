@@ -18,7 +18,7 @@ yarn run lint
 ```
 ## content
 
-# views目录结构(根据多需求的router 设计)
+### views目录结构(根据多需求的router 设计)
 如单独页面有滚动条，或不需要滚动条,可以用 position 中 relative 和 absolute 来控制
 ```
 |-- views
@@ -33,7 +33,7 @@ yarn run lint
         |-- xxx.vue
 ```
 
-# components目录结构(结构与views 命名规则相同)
+### components目录结构(结构与views 命名规则相同)
 ```
 |-- components
     |-- common
@@ -46,7 +46,7 @@ yarn run lint
         |-- xxx.vue
 ```
 
-# api目录结构(结构与views 命名规则相同)
+### api目录结构(结构与views 命名规则相同)
 ```
 |-- api
     |-- common
@@ -54,7 +54,7 @@ yarn run lint
     |-- login
         |-- xxx.js
 ```
-# assets目录结构(结构与views 命名规则相同)
+### assets目录结构(结构与views 命名规则相同)
 ```
 |-- assets
     |-- css
@@ -65,7 +65,7 @@ yarn run lint
         |-- xxx.png
 ```
 
-# router目录结构(变量与views命名规则相同,可利用require.context获取views文件目录自动生成路由，默认静态设置,具体参看router 文件夹)
+### router目录结构(变量与views命名规则相同,可利用require.context获取views文件目录自动生成路由，默认静态设置,具体参看router 文件夹)
 ```
 |-- router
     |-- index.js
@@ -73,20 +73,20 @@ yarn run lint
 ```
 
 
-# store目录结构
+### store目录结构
 ```
 |-- sotre
     |-- index.js
 ```
 
 
-# dev.js
+### dev.js
 代理配置 根据需求而定，在api中进行引入，打包时会显示ajax是以什么路径打包
 
-# vue.config.js
+### vue.config.js
 基本优化  注释去除 console 去除 代码压缩 sourceMap去除 默认scss 等
 
-# app.vue
+### app.vue
 默认全局样式
 ```
 *,
