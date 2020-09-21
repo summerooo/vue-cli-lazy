@@ -41,7 +41,7 @@ const other = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/login.vue'),
+    component: () => import('../views/other/login.vue'),
   }
 ]
 

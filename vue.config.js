@@ -48,13 +48,8 @@ module.exports = {
     port: 8008,
 		proxy: proxy
 	},
-<<<<<<< HEAD
-  // history  ->  '/'    hash  ->  './' 
-	publicPath: undefined,
-=======
   // history  ->  '/'    hash  ->  './'
   publicPath: undefined,
->>>>>>> master
 	outputDir: undefined,
 	assetsDir: undefined,
 	parallel: undefined,
