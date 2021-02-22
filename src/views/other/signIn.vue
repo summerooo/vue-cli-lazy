@@ -1,7 +1,5 @@
 <template>
   <div>
-    login
-    register
-    forget
+    login register forget
   </div>
 </template>
