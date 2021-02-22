@@ -29,11 +29,13 @@ const layout = {
     mine
   ]
 }
+
 const index = {
   path: '',
   name: 'index',
   redirect: '/mine/home'
 }
+
 const other = [
   {
     path: '/login',
