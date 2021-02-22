@@ -4,11 +4,10 @@ fi
 git pull origin master
 git add .
 if [ -n "$1" ]; then
-  desc=$1
+  git commit -m $1
 else
-  desc='update'
+  git commit -m 'update'
 fi
-git commit -m desc
 git push origin master
 # if [ "$1" == "build" ]; then
 # # yarn build
