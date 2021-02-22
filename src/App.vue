@@ -57,4 +57,7 @@ li {
 a {
   text-decoration:none;
 }
+img {
+  display: block;
+}
 </style>

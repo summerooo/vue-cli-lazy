@@ -1,26 +1,49 @@
-//routes.js
-//递归获取 views 文件夹下的所有.vue文件
-const files = require.context('@/views', true, /\.vue$/)
-let pages = {}
-files.keys().forEach((key) => {
-  pages[key.replace(/(\.\/|\.vue)/g, '')] = files(key).default
-})
-//生成路由规则
-let generator = []
-Object.keys(pages).forEach((item) => {
-  generator.push({
-    path: `/${pages[item].name.replace(/-/g, '/')}`,
-    name: pages[item].name,
-    component: pages[item],
-  })
-})
-//合并公共路由以及重定向规则
-const routes = [
-  ...generator,
-  {
-    path: '*',
-    component: () => import('@/views/Common/404.vue'),
+import common from '../views/common'
+
+
+const mine = {
+  path: '/mine',
+  name: 'mine',
+  meta: {
+    module: '扫雷'
   },
+  redirect: '/mine/home',
+  component: common,
+  children: [
+    {
+      path: '/mine/home',
+      name: 'mineHome',
+      meta: {
+        title: '首页'
+      },
+      component: () => import('../views/mine/mine')
+    },
+  ]
+}
+
+const layout = {
+  path: '/layout',
+  name: 'layout',
+  component: () => import('../views/layout'),
+  children: [
+    mine
+  ]
+}
+const index = {
+  path: '',
+  name: 'index',
+  redirect: '/mine/home'
+}
+const other = [
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/other/signIn'),
+  }
 ]
 
-export default routes
+export default [
+  index,
+  layout,
+  ...other
+]

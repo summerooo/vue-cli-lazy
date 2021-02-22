@@ -49,7 +49,9 @@ export default {
 <style lang="scss" scoped>
 .layoutContainer {
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  position: relative;
+  height: auto;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
