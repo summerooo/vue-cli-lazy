@@ -19,7 +19,7 @@ yarn run lint
 ## content
 
 ### views目录结构(根据多需求的router 设计)
-如单独页面有滚动条，或不需要滚动条,可以用 position 中 relative 和 absolute 来控制
+<!-- 如单独页面有滚动条，或不需要滚动条,可以用 position 中 relative 和 absolute 来控制 -->
 ```
 |-- views
     |-- layout.vue (相同布局公共组件,可有多个layout，根据需求而定)
