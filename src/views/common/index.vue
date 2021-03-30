@@ -6,7 +6,7 @@
 <style lang="scss" scoped>
   .commonContainer {
     position: relative;
-    flex: 1;
+    flex-grow: 1;
     overflow-y: auto;
     overflow-x: hidden;
   }
