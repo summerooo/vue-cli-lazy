@@ -1,0 +1,19 @@
+{
+  "name": "vvv",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "vue": "^3.0.4",
+    "vue-router": "^4.0.5"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.4",
+    "sass": "^1.32.8",
+    "vite": "^1.0.0-rc.13"
+  }
+}
