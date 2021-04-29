@@ -37,6 +37,11 @@ const other = [
   {
     path: '/login',
     name: 'login',
+    meta: {
+      title: 'login',
+      description: 'description login',
+      keywords: 'keywords,login,asd,123,4566',
+    },
     component: () => import('../views/other/signIn.vue'),
   },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../views/other/notFound.vue') },

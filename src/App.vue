@@ -12,11 +12,11 @@ export default {
   setup() {
     return { ...mapState(['info', 'token']) }
   },
-  created() {
-    this.getState(['info', 'token'])
-  },
   methods: {
     ...mapMutations(['getState']),
+  },
+  mounted() {
+    this.getState(['info', 'token'])
   },
 }
 </script>

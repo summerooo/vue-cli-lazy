@@ -1,22 +1,22 @@
 <template>
   <div class="all">
-    <div>
-      <tr v-for="(item, y) in map" :key="y">
-        <td v-for="(x, i) in item" :key="map.length + i"
+    <div class="content">
+      <div class="tr" v-for="(item, y) in map"  >
+        <div class="td" v-for="(x, i) in item" 
           :style="{'color': isMine(`${x}-${y}`) ? 'red' : ''}"
           :class="{'active': activeCoordinate[`${x}-${y}`]}"
           @click="clickCell(`${x}-${y}`)"
-        >
-        <!-- {{`${x}-${y}`}} -->
-        <!-- {{activeCoordinate[`${x}-${y}`] ? coordinate[`${x}-${y}`] : ''}} -->
-        {{coordinate[`${x}-${y}`]}}
-        </td>
-      </tr>
+          >
+          {{coordinate[`${x}-${y}`]}}
+          <!-- v-text="coordinate[`${x}-${y}`]" -->
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { nextTick } from 'vue'
 export default {
   data() {
     return {
@@ -26,14 +26,18 @@ export default {
       mineCoordinate: [],
       coordinate: {},
       activeCoordinate: {},
-      map: []
+      map: [],
+      itemRefs: []
     }
   },
-  created() {
+  async created() {
+    await nextTick()
     this.init()
-    console.log(this.coordinate)
   },
   methods: {
+    setItemRef(el) {
+      this.itemRefs.push(el)
+    },
     async init() {
       for (let x = 0; x < this.mine; x++) {
         this.map[x] = []
@@ -64,12 +68,12 @@ export default {
     clickCell (xys) {
       if (this.isMine(xys)) return console.log('踩到了')
       let spread = cell => {
-        console.log(this.coordinate[cell], '?')
+        // console.log(this.coordinate[cell], '?')
         if (this.coordinate[cell]) this.activeCoordinate[cell] = true
         let xy = cell.split('-')
         for (let i = +xy[0] - 1; i <= +xy[0] + 1; i++) {
           for (let j = +xy[1] - 1; j <= +xy[1] + 1; j++) {
-            console.log(this.coordinate[`${i}-${j}`] === '')
+            // console.log(this.coordinate[`${i}-${j}`] === '')
             if (!this.activeCoordinate[`${i}-${j}`] && !this.isMine(`${i}-${j}`)) {
               this.activeCoordinate[`${i}-${j}`] = true
               if (this.coordinate[`${i}-${j}`] === '') spread(`${i}-${j}`)
@@ -91,7 +95,10 @@ export default {
       }
       return n
     } 
-  }
+  },
+  mounted() {
+    
+  },
 }
 </script>
 
@@ -102,7 +109,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  td {
+  .content {
+    display: flex;
+  }
+  .tr {
+    display: block;
+  }
+  .td {
     width: $large;
     height: $large;
     text-align: center;

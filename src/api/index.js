@@ -2,6 +2,7 @@ import axios from 'axios'
 // import { Message } from 'element-ui'
 // import Router from '../router'
 import { state } from '../store'
+import { nextTick } from 'vue'
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.timeout = 100000
 
@@ -9,13 +10,14 @@ axios.interceptors.request.use(
   config => {
     //强行中断请求
     config.cancelToken = axios.CancelToken(cancel => state.requestList.push(cancel))
-    console.log(state.requestList)
+    // console.log(state.requestList)
     return config
   },
   err => Promise.reject(err)
 )
 
-let antiShake = message => {
+let antiShake = async message => {
+  await nextTick()
   let currentTime = new Date().getTime()
   let timer = +sessionStorage.getItem('timer')
   if (!timer || (currentTime - timer >= 1500)) {
@@ -23,7 +25,7 @@ let antiShake = message => {
     //   showClose: true,
     //   message: message
     // })
-    console.log(message)
+    // console.log(message)
     sessionStorage.setItem('timer', currentTime)
   }
 }
@@ -38,7 +40,7 @@ axios.interceptors.response.use(
         return false
       }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       antiShake(response.data.errmsg)
       return false
     }

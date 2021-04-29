@@ -3,8 +3,16 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "serve": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 8088",
+
+    "ssrserver": "node server",
+    "ssrbuild": "yarn build:client && yarn build:server",
+    "ssrpreview": "cross-env NODE_ENV=production node server",
+
+    "build:client": "vite build --ssrManifest --outDir dist/client ",
+    "build:server": "vite build --ssr server/entry-server.js --outDir dist/server"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -12,8 +20,13 @@
     "vue-router": "^4.0.5"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.4",
+    "@vue/server-renderer": "^3.0.11",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
     "sass": "^1.32.8",
-    "vite": "^1.0.0-rc.13"
+    "vite": "^2.2.3"
   }
 }

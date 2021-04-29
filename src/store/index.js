@@ -10,7 +10,7 @@ export const mutations = {
     const getTypeof = mutations.getTypeof
     for (let i in data) {
       if (getTypeof(state[i]) !== getTypeof(data[i])) {
-        console.log(`state中${i}类型为${getTypeof(state[i])},传入值为${data[i]}`)
+        console.log(`state中${i}类型为${getTypeof(state[i])},传入值为${data[i]},请检查state中是否存在`)
         continue
       }
       state[i] = data[i]

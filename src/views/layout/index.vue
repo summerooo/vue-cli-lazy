@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     init() {
-      console.log(this.$router)
+      // console.log(this.$router)
     },
     routeInit() {
       this.currentBreadcrumb = []

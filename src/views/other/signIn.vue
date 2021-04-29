@@ -1,13 +1,16 @@
 <template>
   <div>
     login
-    register forget
+    register
+    forget
   </div>
 </template>
 <script>
-import { login } from '/@/api/what/test'
+import { login } from '@/api/what/test'
 export default {
-  async created() {
+  methods: {
+  },
+  async mounted() {
     await login()
   }
 }
