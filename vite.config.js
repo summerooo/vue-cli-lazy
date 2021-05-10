@@ -16,7 +16,7 @@ import path from 'path'
 let mode = process.env.npm_lifecycle_event
 let modeCorrespondingPath = {
   'build:client': path.resolve(__dirname, '/server/index.html'),
-  'build:server': path.resolve(__dirname, 'server/entry-server.js'),
+  'build:server': path.resolve(__dirname, '/server/entry-server.js'),
   'build': path.resolve(__dirname, '/index.html'),
 }
 export default {
@@ -36,16 +36,16 @@ export default {
         // 'entry-server': path.resolve(__dirname, 'server/entry-server.js'),
         // index: path.resolve(__dirname, '/index.html'),
         // client: true ? path.resolve(__dirname, '/server/index.html') : '',
-        index: modeCorrespondingPath[mode],
+        index: modeCorrespondingPath[mode] || '',
       },
       output: {
         inlineDynamicImports: false,
       }
     },
-    
+
     // optimizeDeps: {
     //   entries: {
-        
+
     //   }
     // }
   },
