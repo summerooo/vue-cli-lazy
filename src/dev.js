@@ -2,6 +2,7 @@ let host = ''
 
 let nginx = false
 nginx = true
+let nginxSuffix = ''
 
 export const proxy = {
   '/api': {
@@ -28,7 +29,7 @@ for (let i in proxy) {
 if (process.env.NODE_ENV === 'production') {
   if (!nginx) {
     for (let i in proxy) {
-      proxyApi[i.replace(/\//, '')] = proxy[i].target
+      proxyApi[i.replace(/\//, '')] = nginx ? (i + nginxSuffix) : proxy[i].target
     }
   }
 }
