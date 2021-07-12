@@ -27,10 +27,8 @@ for (let i in proxy) {
 }
 // build
 if (process.env.NODE_ENV === 'production') {
-  if (!nginx) {
-    for (let i in proxy) {
-      proxyApi[i.replace(/\//, '')] = nginx ? (i + nginxSuffix) : proxy[i].target
-    }
+  for (let i in proxy) {
+    proxyApi[i.replace(/\//, '')] = nginx ? (i + nginxSuffix) : proxy[i].target
   }
 }
 console.log(proxyApi, process.env.NODE_ENV)
