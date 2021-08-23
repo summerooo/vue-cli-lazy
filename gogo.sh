@@ -1,4 +1,4 @@
-if [ "$1" == "build" ]; then
+if [ "$2" == "build" ]; then
 yarn build
 fi
 git pull origin master
@@ -9,7 +9,8 @@ else
   git commit -m 'update'
 fi
 git push origin master
-# if [ "$1" == "build" ]; then
-# # yarn build
-# # expect ftp.sh
-# fi
+if [ "$2" == "build" ]; then
+  # yarn build
+  # expect expect.sh
+  sh expect.sh
+fi
