@@ -68,7 +68,10 @@ export default {
   // },
   server: {
     // port: '8000',
-    proxy: proxy
+    proxy: proxy,
+    server: {
+      host: '0.0.0.0'
+    }	
   },
   css: {
     preprocessorOptions: {
