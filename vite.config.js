@@ -23,6 +23,7 @@ export default {
   plugins: [vue()],
   // logLevel: 'silent',
   build: {
+    minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true
