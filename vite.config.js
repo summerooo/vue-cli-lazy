@@ -1,14 +1,3 @@
-// gzip
-// const CompressionPlugin = require('compression-webpack-plugin')
-// drop console
-// const TerserPlugin = require('terser-webpack-plugin')
-
-// import { defineConfig } from 'vite'
-
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [vue()]
-// })
 
 import vue from '@vitejs/plugin-vue'
 import { proxy } from './src/dev'
@@ -19,6 +8,7 @@ let modeCorrespondingPath = {
   'build:server': path.resolve(__dirname, '/server/entry-server.js'),
   'build': path.resolve(__dirname, '/index.html'),
 }
+
 export default {
   plugins: [vue()],
   // logLevel: 'silent',
@@ -43,12 +33,6 @@ export default {
         inlineDynamicImports: false,
       }
     },
-
-    // optimizeDeps: {
-    //   entries: {
-
-    //   }
-    // }
   },
   resolve: {
     alias: {

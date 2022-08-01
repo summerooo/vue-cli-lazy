@@ -14,17 +14,17 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
-    "vue": "^3.2.31",
+    "vue": "^3.2.37",
     "vue-router": "4.0.13"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.2.4",
+    "@vitejs/plugin-vue": "^3.0.0",
+    "vite": "^3.0.0",
     "@vue/compiler-sfc": "^3.2.31",
     "@vue/server-renderer": "^3.2.31",
     "compression": "^1.7.4",
     "cross-env": "^7.0.3",
     "express": "^4.17.3",
-    "sass": "^1.49.9",
-    "vite": "2.8.6"
+    "sass": "^1.49.9"
   }
 }
