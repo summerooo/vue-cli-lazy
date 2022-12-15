@@ -80,7 +80,6 @@ export default {
         // additionalData: `@use "~/styles/element/index.scss" as *;`,
         // additionalData: `@import "./src/assets/css/common.scss";`
         additionalData: `@use "./src/assets/css/common.scss" as *;`
-        // additionalData: `@import "./src/assets/css/common.scss";`
       }
     }
   }
