@@ -77,7 +77,10 @@ export default {
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/assets/css/common.scss";`
+        // additionalData: `@use "~/styles/element/index.scss" as *;`,
+        // additionalData: `@import "./src/assets/css/common.scss";`
+        additionalData: `@use "./src/assets/css/common.scss" as *;`
+        // additionalData: `@import "./src/assets/css/common.scss";`
       }
     }
   }
