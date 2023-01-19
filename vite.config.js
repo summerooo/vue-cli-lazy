@@ -17,7 +17,7 @@ let mode = process.env.npm_lifecycle_event
 let modeCorrespondingPath = {
   'build:client': path.resolve(__dirname, '/server/index.html'),
   'build:server': path.resolve(__dirname, '/server/entry-server.js'),
-  'build': path.resolve(__dirname, '/index.html'),
+  'build': path.resolve(__dirname, './index.html'),
 }
 export default {
   plugins: [vue()],
