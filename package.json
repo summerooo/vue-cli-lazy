@@ -1,30 +1,19 @@
 {
-  "name": "vvv",
+  "name": "vite-project",
+  "private": true,
   "version": "0.0.0",
-  "license": "MIT",
+  "type": "module",
   "scripts": {
-    "serve": "vite --host 0.0.0.0",
+    "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 8088",
-    "ssrserver": "node server",
-    "ssrbuild": "yarn build:client && yarn build:server",
-    "ssrpreview": "cross-env NODE_ENV=production node server",
-    "build:client": "vite build --ssrManifest --outDir dist/client ",
-    "build:server": "vite build --ssr server/entry-server.js --outDir dist/server"
+    "build:production": "vite build --mode production",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.26.0",
-    "vue": "^3.2.31",
-    "vue-router": "4.0.13"
+    "vue": "^3.3.11"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.2.4",
-    "@vue/compiler-sfc": "^3.2.31",
-    "@vue/server-renderer": "^3.2.31",
-    "compression": "^1.7.4",
-    "cross-env": "^7.0.3",
-    "express": "^4.17.3",
-    "sass": "^1.49.9",
-    "vite": "2.8.6"
+    "@vitejs/plugin-vue": "^4.5.2",
+    "vite": "^5.0.8"
   }
 }
