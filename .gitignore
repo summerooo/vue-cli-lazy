@@ -3,6 +3,6 @@ node_modules
 dist
 dist-ssr
 *.local
-gogo.sh
+# gogo.sh
 expect.sh
 .idea
