@@ -4,16 +4,20 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "build:production": "vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "@vicons/ionicons5": "^0.12.0",
+    "axios": "^1.7.7",
+    "naive-ui": "^2.39.0",
+    "vue": "^3.5.5",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
-    "vite": "^5.0.8"
+    "@vitejs/plugin-vue": "^5.1.3",
+    "vite": "^5.4.5"
   }
 }
