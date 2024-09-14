@@ -6,3 +6,4 @@ dist-ssr
 # gogo.sh
 expect.sh
 .idea
+yarn.lock
