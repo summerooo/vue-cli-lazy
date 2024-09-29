@@ -4,6 +4,9 @@ import { proxy } from './src/dev'
 import path from 'path'
 
 export default defineConfig({
+  define: {
+    'process.env': process.env
+  },
   plugins: [vue()],
   server: {
     proxy,
