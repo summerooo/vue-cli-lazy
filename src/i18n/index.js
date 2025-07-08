@@ -2,20 +2,22 @@
 import { ref, computed } from 'vue'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import enUS from 'element-plus/es/locale/lang/en'
+import cn from './cn.json'
+import us from './us.json'
 import { userLanguage, i18nMessageJson } from '@/api/i18n'
 export const lang = ref()
 export const supportLangs = ref({
   'zh-cn': {
     locale: zhCn,
     name: '中文',
-    data: {},
+    data: cn,
     acceptLanguage: 'zh-CN,zh;q=0.9',
     lang: 'zh_CN',
   },
   'en-us': {
     locale: enUS,
     name: 'English',
-    data: {},
+    data: us,
     acceptLanguage: 'en-US,en;q=0.9',
     lang: 'en_US',
   },
