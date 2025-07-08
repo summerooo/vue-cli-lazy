@@ -38,7 +38,7 @@ const proxy = {
 const proxyApi = Object.fromEntries(
   Object.entries(proxy).map(([key, value]) => [
     key.slice(1),
-    process.env.NODE_ENV === 'production' && nginx
+    nginx
       ? key + nginxSuffix
       : value.target
   ])
