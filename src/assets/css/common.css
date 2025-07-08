@@ -1,0 +1,29 @@
+@theme-bgcolor :rgba (15, 14, 14, 0.5);
+.full-container {
+  width: 100%;
+  height: 100%;
+  padding: 15px 20px 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flex-center-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+* {
+  box-sizing: border-box;
+}
+.oneLine {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.twoLine {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
