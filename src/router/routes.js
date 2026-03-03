@@ -1,4 +1,3 @@
-import common from '../views/common/index.vue'
 
 const 首页 = {
   path: '/home',
@@ -7,7 +6,7 @@ const 首页 = {
     module: '首页'
   },
   redirect: '/home/index',
-  component: common,
+  component: () => import('../views/common/index.vue'),
   children: [
 		{
       path: '/home/index',

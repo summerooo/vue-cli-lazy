@@ -2,21 +2,12 @@
 	<router-view />
 </template>
 <script>
-	import { mapState, mapMutations } from './store'
+	import { useUserStore } from './store/user'
+	import { mapState } from 'pinia'
+
 	export default {
-		data() {
-			return {}
-		},
-		setup() {
-			return {
-				...mapState(['info', 'token'])
-			}
-		},
-		methods: {
-			...mapMutations(['getState']),
-		},
-		mounted() {
-			this.getState(['info', 'token'])
-		},
+		computed: {
+			...mapState(useUserStore, ['info', 'token'])
+		}
 	}
 </script>
