@@ -5,14 +5,15 @@ import path from 'path'
 import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig(({ mode }) => {
-  // 加载当前模式的环境变量
-  const env = loadEnv(mode, process.cwd(), '')
-  // 注入到 process.env 供 src/dev.js 使用
-  Object.assign(process.env, env)
+  // 加载当前模式的环境变量（安全地只加载 VITE_ 开头的变量，避免泄露系统敏感变量）
+  const env = loadEnv(mode, process.cwd(), 'VITE_')
 
   return {
     define: {
-      'process.env': env
+      'process.env': {
+        NODE_ENV: JSON.stringify(mode),
+        ...env
+      }
     },
     plugins: [
       vue(),
