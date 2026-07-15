@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { proxy } from './src/dev'
+import { proxy } from './src/config'
 import path from 'path'
 import viteCompression from 'vite-plugin-compression'
 
