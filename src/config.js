@@ -12,7 +12,7 @@ export const cosConfig = {
 // host/socket: URL used by frontend runtime.
 // targetHost/targetSocket: Vite proxy target.
 const environments = {
-  'build:production': {
+  'build:prd': {
     host: '/api',
     socket: '/socket',
     targetHost: 'http://api.hbgxzhny.com/api',
