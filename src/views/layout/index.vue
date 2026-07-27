@@ -3,14 +3,20 @@
     <!-- 顶部导航栏 -->
     <header class="layout-header">
       <div class="brand">
-        <SvgIcon name="logo" :size="20" color="#818cf8" />
+        <!-- 示范使用本地 src/assets/svg/logo.svg 文件 -->
+        <SvgIcon :name="logoSvg" :size="22" />
         <span class="logo-text">Vue CLI Lazy</span>
       </div>
       <div class="user-profile">
-        <div class="user-avatar">{{ userStore.username?.charAt(0).toUpperCase() || 'U' }}</div>
+        <!-- 示范使用本地 src/assets/svg/user.svg 文件 -->
+        <div class="user-avatar">
+          <SvgIcon :name="userSvg" :size="18" color="#ffffff" />
+        </div>
         <span class="user-name">{{ userStore.username || '未登录' }}</span>
+
+        <!-- 示范使用本地 src/assets/svg/logout.svg 文件 -->
         <button class="logout-btn" @click="handleLogout">
-          <SvgIcon name="logout" :size="14" />
+          <SvgIcon :name="logoutSvg" :size="14" />
           <span>退出登录</span>
         </button>
       </div>
@@ -32,6 +38,11 @@
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/store/user'
 import SvgIcon from '@/components/common/SvgIcon.vue'
+
+// 导入本地 src/assets/svg/ 目录下的 SVG 静态资源
+import logoSvg from '@/assets/svg/logo.svg'
+import userSvg from '@/assets/svg/user.svg'
+import logoutSvg from '@/assets/svg/logout.svg'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -90,9 +101,6 @@ function handleLogout() {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
-      font-size: 14px;
-      color: #fff;
     }
 
     .user-name {
