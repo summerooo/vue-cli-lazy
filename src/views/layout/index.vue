@@ -3,14 +3,14 @@
     <!-- 顶部导航栏 -->
     <header class="layout-header">
       <div class="brand">
-        <SvgIcon name="🚀" :size="22" />
+        <SvgIcon name="logo" :size="20" color="#818cf8" />
         <span class="logo-text">Vue CLI Lazy</span>
       </div>
       <div class="user-profile">
         <div class="user-avatar">{{ userStore.username?.charAt(0).toUpperCase() || 'U' }}</div>
         <span class="user-name">{{ userStore.username || '未登录' }}</span>
         <button class="logout-btn" @click="handleLogout">
-          <SvgIcon name="🚪" :size="14" />
+          <SvgIcon name="logout" :size="14" />
           <span>退出登录</span>
         </button>
       </div>
@@ -67,10 +67,6 @@ function handleLogout() {
     align-items: center;
     gap: 10px;
 
-    .logo-icon {
-      font-size: 20px;
-    }
-
     .logo-text {
       font-size: 18px;
       font-weight: 700;
@@ -108,6 +104,9 @@ function handleLogout() {
     .logout-btn {
       margin-left: 8px;
       padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #cbd5e1;

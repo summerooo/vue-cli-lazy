@@ -4,16 +4,20 @@
       <!-- 顶部控制台 -->
       <div class="status-bar">
         <div class="status-badge mine">
-          <span class="icon">💣</span>
+          <SvgIcon name="mine" :size="16" color="#ef4444" />
           <span class="value">{{ remainingMines }}</span>
         </div>
 
         <button class="reset-btn" @click="resetGame()">
-          {{ isGameOver ? (gameState === GameState.WON ? '😎' : '😵') : '😀' }}
+          <SvgIcon
+            :name="isGameOver ? (gameState === GameState.WON ? 'win' : 'lost') : 'reset'"
+            :size="20"
+            :color="isGameOver ? (gameState === GameState.WON ? '#10b981' : '#ef4444') : '#4f46e5'"
+          />
         </button>
 
         <div class="status-badge flag">
-          <span class="icon">🚩</span>
+          <SvgIcon name="flag" :size="16" color="#f59e0b" />
           <span class="value">{{ flagCount }}</span>
         </div>
       </div>
@@ -34,7 +38,7 @@
       <!-- 游戏结束提示浮层 -->
       <div v-if="isGameOver" class="game-banner" :class="gameState">
         <span>{{
-          gameState === GameState.WON ? '🎉 恭喜通关！无一踩雷！' : '💥 踩地雷啦！再接再厉！'
+          gameState === GameState.WON ? '恭喜通关！完美扫清地雷！' : '踩到地雷！再接再厉！'
         }}</span>
       </div>
 
@@ -49,8 +53,8 @@
             @click="handleClick(cell.row, cell.col)"
             @contextmenu.prevent="handleRightClick(cell.row, cell.col)"
           >
-            <span v-if="cell.isRevealed && cell.isMine">💣</span>
-            <span v-else-if="cell.isFlagged">🚩</span>
+            <SvgIcon v-if="cell.isRevealed && cell.isMine" name="mine" :size="18" color="#ef4444" />
+            <SvgIcon v-else-if="cell.isFlagged" name="flag" :size="16" color="#f59e0b" />
             <span
               v-else-if="cell.isRevealed && cell.adjacentMines > 0"
               :class="`num-${cell.adjacentMines}`"
@@ -66,6 +70,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import SvgIcon from '@/components/common/SvgIcon.vue'
 
 const GameState = {
   PLAYING: 'playing',
@@ -296,7 +301,6 @@ resetGame()
   }
 
   .reset-btn {
-    font-size: 28px;
     border: none;
     background: #f8fafc;
     border: 1px solid $border-color;
@@ -311,7 +315,7 @@ resetGame()
     transition: $transition-base;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.08);
       background: #fff;
       box-shadow: $shadow-md;
     }
@@ -411,11 +415,11 @@ resetGame()
   }
 
   &.mine {
-    background: #fca5a5;
+    background: #fee2e2;
   }
 
   &.flagged {
-    background: #fef08a;
+    background: #fef3c7;
   }
 }
 
