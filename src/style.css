@@ -5,23 +5,36 @@
   margin: 0;
   padding: 0;
 }
+
 html,
 body,
 #app {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100%;
-  min-width: 1400px;
-  min-height: 720px;
-  position: relative;
+  height: 100%;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
 li {
   list-style: none;
 }
+
 a {
   text-decoration: none;
+  color: inherit;
 }
+
 img {
   display: block;
+  max-width: 100%;
 }

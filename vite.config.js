@@ -1,51 +1,65 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { proxy } from './src/config'
 import path from 'path'
 import viteCompression from 'vite-plugin-compression'
+import { proxy } from './src/config/index.js'
 
 export default defineConfig(({ mode }) => {
-  // 加载当前模式的环境变量（安全地只加载 VITE_ 开头的变量，避免泄露系统敏感变量）
-  const env = loadEnv(mode, process.cwd(), 'VITE_')
-
   return {
-    define: {
-      'process.env': {
-        NODE_ENV: JSON.stringify(mode),
-        ...env
-      }
-    },
     plugins: [
       vue(),
+      // Gzip 压缩：生产构建时自动对大于 10KB 的文件生成 .gz 版本
       viteCompression({
-        threshold: 10240, // 超过 10kb 则压缩
-        algorithm: 'gzip', // 压缩算法
-        ext: '.gz', // 文件后缀
+        threshold: 10240,
+        algorithm: 'gzip',
+        ext: '.gz',
         compressionOptions: {
-          level: 9,               // 压缩级别 1-9，数字越大压缩率越高
+          level: 9,
         },
-      })
+      }),
     ],
-    server: {
-      proxy,
-      host: true
-    },
-    esbuild: {
-      drop: ['console', 'debugger'],
-    },
+
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),
-        '/@/': path.resolve(__dirname, 'src')
       },
     },
+
+    server: {
+      host: true,
+      // 代理配置从 src/config/index.js 集中管理
+      proxy,
+    },
+
+    build: {
+      // 分包策略：将第三方库拆分为独立 chunk，利用浏览器缓存
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router')) {
+                return 'vue'
+              }
+              if (id.includes('axios')) {
+                return 'axios'
+              }
+            }
+          },
+        },
+      },
+    },
+
+    // 生产构建移除 console 和 debugger
+    esbuild: {
+      drop: mode === 'production' ? ['console', 'debugger'] : [],
+    },
+
     css: {
       preprocessorOptions: {
-        scss: {
-          charset: false,
-          additionalData: `@use "./src/assets/css/common.scss" as *;`
-        }
+        less: {
+          javascriptEnabled: true,
+        },
       },
-    }
+    },
   }
 })

@@ -3,7 +3,15 @@ node_modules
 dist
 dist-ssr
 *.local
-# gogo.sh
-expect.sh
+
+# 环境变量本地覆盖（不提交到仓库）
+.env.local
+.env.*.local
+
+# 编辑器
 .idea
+.vscode
+
+# 系统文件
 yarn.lock
+expect.sh

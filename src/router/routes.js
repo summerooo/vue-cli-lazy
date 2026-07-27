@@ -1,56 +1,49 @@
+/**
+ * 路由表配置
+ */
 
-const 首页 = {
-  path: '/home',
-  name: 'home',
-  meta: {
-    module: '首页'
-  },
-  redirect: '/home/index',
-  component: () => import('../views/common/index.vue'),
+/** 主布局与业务页面 */
+const layoutRoute = {
+  path: '/layout',
+  name: 'layout',
+  component: () => import('@/views/layout/index.vue'),
+  redirect: '/home',
   children: [
-		{
-      path: '/home/index',
-      name: 'homeIndex',
+    {
+      path: '/home',
+      name: 'home',
       meta: {
         title: '首页',
       },
-      component: () => import('../views/layout/home.vue'),
+      component: () => import('@/views/home.vue'),
     },
-	],
-}
-
-// 布局
-const layout = {
-  path: '/layout',
-  name: 'layout',
-  component: () => import('../views/layout/index.vue'),
-  children: [
-    首页,
   ],
 }
 
-const index = {
-	path: '',
-	name: 'index',
-	redirect: '/home',
+/** 根路由重定向 */
+const rootRoute = {
+  path: '/',
+  redirect: '/home',
 }
 
-
-const other = [{
-		path: '/login',
-		name: 'login',
-		meta: {
-			title: '登录',
-			description: 'description',
-			keywords: '',
-		},
-		component: () => import('../views/other/signIn.vue'),
-	},
-	{
-		path: '/:pathMatch(.*)*',
-		name: 'NotFound',
-		component: () => import('../views/other/notFound.vue')
-	},
+/** 独立页面 (无需 Layout 包裹) */
+const standaloneRoutes = [
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      title: '登录',
+    },
+    component: () => import('@/views/login.vue'),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    meta: {
+      title: '页面不存在',
+    },
+    component: () => import('@/views/notFound.vue'),
+  },
 ]
 
-export default [index, layout, ...other]
+export default [rootRoute, layoutRoute, ...standaloneRoutes]
