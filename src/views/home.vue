@@ -6,6 +6,7 @@
 
 <script setup>
 import Minesweeper from '@/components/Minesweeper.vue'
+​const msg = "hello" ;
 </script>
 
 <style lang="scss" scoped>
