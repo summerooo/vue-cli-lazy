@@ -34,7 +34,7 @@ function handleLogout() {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .layout-container {
   width: 100%;
   min-height: 100vh;

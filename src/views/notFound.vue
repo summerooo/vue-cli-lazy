@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .not-found {
   width: 100vw;
   height: 100vh;

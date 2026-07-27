@@ -12,7 +12,7 @@
 | 状态管理 | [Pinia 3](https://pinia.vuejs.org/) | Setup Store + 自动持久化插件 |
 | 网络请求 | [Axios](https://axios-http.com/) | 统一拦截器 + Token 注入 + 路由切换取消请求 |
 | 代码规范 | ESLint + Prettier | Flat Config + 代码格式化 |
-| CSS 预处理 | Less | 预处理器支持 |
+| CSS 预处理 | [Sass / SCSS](https://sass-lang.com/) | 现代 CSS 预处理器支持 |
 
 ## 📁 目录结构
 

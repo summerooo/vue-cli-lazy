@@ -8,7 +8,7 @@
 import Minesweeper from '@/components/Minesweeper.vue'
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .home-page {
   width: 100%;
   height: 100%;

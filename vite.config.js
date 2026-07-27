@@ -56,8 +56,8 @@ export default defineConfig(({ mode }) => {
 
     css: {
       preprocessorOptions: {
-        less: {
-          javascriptEnabled: true,
+        scss: {
+          api: 'modern-compiler',
         },
       },
     },

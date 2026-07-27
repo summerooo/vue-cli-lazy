@@ -30,7 +30,7 @@ function handleLogin() {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .login-container {
   width: 100vw;
   height: 100vh;
