@@ -3,13 +3,14 @@
     <!-- 顶部导航栏 -->
     <header class="layout-header">
       <div class="brand">
-        <span class="logo-icon">🚀</span>
+        <SvgIcon name="🚀" :size="22" />
         <span class="logo-text">Vue CLI Lazy</span>
       </div>
       <div class="user-profile">
         <div class="user-avatar">{{ userStore.username?.charAt(0).toUpperCase() || 'U' }}</div>
         <span class="user-name">{{ userStore.username || '未登录' }}</span>
         <button class="logout-btn" @click="handleLogout">
+          <SvgIcon name="🚪" :size="14" />
           <span>退出登录</span>
         </button>
       </div>
@@ -30,6 +31,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/store/user'
+import SvgIcon from '@/components/common/SvgIcon.vue'
 
 const router = useRouter()
 const userStore = useUserStore()
