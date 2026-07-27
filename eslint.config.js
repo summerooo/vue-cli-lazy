@@ -1,15 +1,15 @@
 import pluginVue from 'eslint-plugin-vue'
-import eslintConfigPrettier from 'eslint-config-prettier'
+import eslintPluginPrettier from 'eslint-plugin-prettier/recommended'
 import js from '@eslint/js'
 import globals from 'globals'
 
 /**
- * ESLint Flat Config
+ * ESLint Flat Config (集成 Prettier 格式检错)
  */
 export default [
   js.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
-  eslintConfigPrettier,
+  eslintPluginPrettier, // 将 Prettier 格式问题直接作为 ESLint Error 弹出
 
   {
     files: ['**/*.{js,vue}'],
@@ -26,10 +26,13 @@ export default [
       'vue/no-v-html': 'off',
       'vue/attributes-order': 'off',
 
-      // 严格代码检查规则（触发 npm run lint 报错）
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // 未使用变量直接 error 报错
-      'no-console': 'off', // 允许 console 输出
-      'no-debugger': 'error', // 禁用 debugger 调试器
+      // 严格代码检查规则
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-console': 'off',
+      'no-debugger': 'error',
+
+      // 开启 Prettier 规则报错
+      'prettier/prettier': 'error',
     },
   },
 
