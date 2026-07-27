@@ -50,11 +50,16 @@ const props = defineProps({
 // 利用 Vite 的 import.meta.glob 自动扫描并批量导入 src/assets/svg/ 目录下的所有 svg 文件
 const svgFiles = import.meta.glob('/src/assets/svg/*.svg', { eager: true, import: 'default' })
 
-// 将 /src/assets/svg/xxx.svg 映射为纯文件名 key (如 logo: '/src/assets/svg/logo.svg')
+// 跨平台提取文件名 (兼容 Windows 路径 "\" 和 Mac/Linux 路径 "/")
 const localSvgMap = {}
 for (const path in svgFiles) {
-  const fileName = path.replace(/^\/src\/assets\/svg\//, '').replace(/\.svg$/, '')
-  localSvgMap[fileName] = svgFiles[path]
+  const fileName = path
+    .split(/[/\\]/)
+    .pop()
+    ?.replace(/\.svg$/i, '')
+  if (fileName) {
+    localSvgMap[fileName] = svgFiles[path]
+  }
 }
 
 // 解析出真实的图片/SVG路径
