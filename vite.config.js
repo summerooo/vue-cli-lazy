@@ -58,6 +58,7 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         scss: {
           api: 'modern-compiler',
+          additionalData: `@use "@/assets/styles/variables.scss" as *;`,
         },
       },
     },

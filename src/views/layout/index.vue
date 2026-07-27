@@ -45,7 +45,7 @@ function handleLogout() {
 .layout-header {
   height: 56px;
   padding: 0 24px;
-  background: #001529;
+  background: $header-bg;
   color: #fff;
   display: flex;
   align-items: center;
