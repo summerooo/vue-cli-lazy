@@ -1,4 +1,14 @@
-/* 阿里 Iconfont 在线字体图标库样式引入示例 */
+/**
+ * 阿里 Iconfont 矢量图标库
+ * 
+ * 教学与工程最佳实践说明：
+ * 1. 【开发调试阶段】可使用在线链接 (Font-class CSS / Symbol JS)。
+ * 2. 【企业生产环境】强烈建议在 Iconfont 平台点击 "下载至本地"，
+ *    将解压后的文件放入 `src/assets/iconfont/` 目录下进行本地离线引入。
+ *    原因：在线 CDN 链接平台不承诺稳定性，且无法在内网/局域网部署环境使用。
+ */
+
+// ================= 1. 在线 Font-class 字体引入示例 =================
 @font-face {
   font-family: 'iconfont';
   src: url('//at.alicdn.com/t/font_1014539_qgm9beagfyk.eot');
