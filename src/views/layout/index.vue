@@ -3,20 +3,20 @@
     <!-- 顶部导航栏 -->
     <header class="layout-header">
       <div class="brand">
-        <!-- 示范使用本地 src/assets/svg/logo.svg 文件 -->
-        <SvgIcon :name="logoSvg" :size="22" />
+        <!-- 直接输入名称 "logo"，自动读取 src/assets/svg/logo.svg -->
+        <SvgIcon name="logo" :size="22" />
         <span class="logo-text">Vue CLI Lazy</span>
       </div>
       <div class="user-profile">
-        <!-- 示范使用本地 src/assets/svg/user.svg 文件 -->
+        <!-- 直接输入名称 "user"，自动读取 src/assets/svg/user.svg -->
         <div class="user-avatar">
-          <SvgIcon :name="userSvg" :size="18" color="#ffffff" />
+          <SvgIcon name="user" :size="18" color="#ffffff" />
         </div>
         <span class="user-name">{{ userStore.username || '未登录' }}</span>
 
-        <!-- 示范使用本地 src/assets/svg/logout.svg 文件 -->
+        <!-- 直接输入名称 "logout"，自动读取 src/assets/svg/logout.svg -->
         <button class="logout-btn" @click="handleLogout">
-          <SvgIcon :name="logoutSvg" :size="14" />
+          <SvgIcon name="logout" :size="14" />
           <span>退出登录</span>
         </button>
       </div>
@@ -38,11 +38,6 @@
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/store/user'
 import SvgIcon from '@/components/common/SvgIcon.vue'
-
-// 导入本地 src/assets/svg/ 目录下的 SVG 静态资源
-import logoSvg from '@/assets/svg/logo.svg'
-import userSvg from '@/assets/svg/user.svg'
-import logoutSvg from '@/assets/svg/logout.svg'
 
 const router = useRouter()
 const userStore = useUserStore()
