@@ -1,0 +1,19 @@
+/* 阿里 Iconfont 在线字体图标库样式引入示例 */
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1014539_qgm9beagfyk.eot');
+  src:
+    url('//at.alicdn.com/t/font_1014539_qgm9beagfyk.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1014539_qgm9beagfyk.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1014539_qgm9beagfyk.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1014539_qgm9beagfyk.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1014539_qgm9beagfyk.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-size: inherit;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
