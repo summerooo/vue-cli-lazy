@@ -1,58 +1,64 @@
 <template>
-  <div class="minesweeper">
-    <!-- 状态栏 -->
-    <div class="status-bar">
-      <div class="status-item">
-        <span class="label">💣 剩余</span>
-        <span class="value">{{ remainingMines }}</span>
-      </div>
-      <div class="status-item">
+  <div class="minesweeper-wrapper">
+    <div class="minesweeper-card">
+      <!-- 顶部控制台 -->
+      <div class="status-bar">
+        <div class="status-badge mine">
+          <span class="icon">💣</span>
+          <span class="value">{{ remainingMines }}</span>
+        </div>
+
         <button class="reset-btn" @click="resetGame()">
-          {{ isGameOver ? '🔄 再来一局' : '😀' }}
+          {{ isGameOver ? (gameState === GameState.WON ? '😎' : '😵') : '😀' }}
+        </button>
+
+        <div class="status-badge flag">
+          <span class="icon">🚩</span>
+          <span class="value">{{ flagCount }}</span>
+        </div>
+      </div>
+
+      <!-- 难度选择器 -->
+      <div class="difficulty-tabs">
+        <button
+          v-for="d in difficulties"
+          :key="d.label"
+          class="tab-btn"
+          :class="{ active: rows === d.size && mineCount === d.mines }"
+          @click="resetGame(d.size, d.mines)"
+        >
+          {{ d.label }}
         </button>
       </div>
-      <div class="status-item">
-        <span class="label">🚩 标记</span>
-        <span class="value">{{ flagCount }}</span>
+
+      <!-- 游戏结束提示浮层 -->
+      <div v-if="isGameOver" class="game-banner" :class="gameState">
+        <span>{{
+          gameState === GameState.WON ? '🎉 恭喜通关！无一踩雷！' : '💥 踩地雷啦！再接再厉！'
+        }}</span>
       </div>
-    </div>
 
-    <!-- 提示消息 -->
-    <div v-if="isGameOver" class="game-message" :class="gameState">
-      {{ gameState === GameState.WON ? '🎉 恭喜通关！' : '💥 踩到地雷了！' }}
-    </div>
-
-    <!-- 难度切换 -->
-    <div class="difficulty">
-      <button
-        v-for="d in difficulties"
-        :key="d.label"
-        class="diff-btn"
-        :class="{ active: rows === d.size && mineCount === d.mines }"
-        @click="resetGame(d.size, d.mines)"
-      >
-        {{ d.label }}
-      </button>
-    </div>
-
-    <!-- 棋盘 -->
-    <div class="board" :style="boardStyle">
-      <div
-        v-for="(cell, index) in flatGrid"
-        :key="index"
-        class="cell"
-        :class="cellClass(cell)"
-        @click="handleClick(cell.row, cell.col)"
-        @contextmenu.prevent="handleRightClick(cell.row, cell.col)"
-      >
-        <span v-if="cell.isRevealed && cell.isMine">💣</span>
-        <span v-else-if="cell.isFlagged">🚩</span>
-        <span
-          v-else-if="cell.isRevealed && cell.adjacentMines > 0"
-          :class="`num-${cell.adjacentMines}`"
-        >
-          {{ cell.adjacentMines }}
-        </span>
+      <!-- 棋盘网格 -->
+      <div class="board-container">
+        <div class="board" :style="boardStyle">
+          <div
+            v-for="(cell, index) in flatGrid"
+            :key="index"
+            class="cell"
+            :class="cellClass(cell)"
+            @click="handleClick(cell.row, cell.col)"
+            @contextmenu.prevent="handleRightClick(cell.row, cell.col)"
+          >
+            <span v-if="cell.isRevealed && cell.isMine">💣</span>
+            <span v-else-if="cell.isFlagged">🚩</span>
+            <span
+              v-else-if="cell.isRevealed && cell.adjacentMines > 0"
+              :class="`num-${cell.adjacentMines}`"
+            >
+              {{ cell.adjacentMines }}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -80,9 +86,9 @@ const isGameOver = computed(
 )
 
 const difficulties = [
-  { label: '初级 (8×8)', size: 8, mines: 10 },
-  { label: '中级 (12×12)', size: 12, mines: 25 },
-  { label: '高级 (16×16)', size: 16, mines: 50 },
+  { label: '初级 8×8', size: 8, mines: 10 },
+  { label: '中级 12×12', size: 12, mines: 25 },
+  { label: '高级 16×16', size: 16, mines: 50 },
 ]
 
 function createCell() {
@@ -221,7 +227,6 @@ function resetGame(size, mines) {
   calculateAdjacent()
 }
 
-// 展开展平数组
 const flatGrid = computed(() => {
   const cells = []
   for (let r = 0; r < grid.value.length; r++) {
@@ -233,7 +238,7 @@ const flatGrid = computed(() => {
 })
 
 const boardStyle = computed(() => ({
-  gridTemplateColumns: `repeat(${cols.value}, 32px)`,
+  gridTemplateColumns: `repeat(${cols.value}, 34px)`,
 }))
 
 function cellClass(cell) {
@@ -248,167 +253,205 @@ resetGame()
 </script>
 
 <style lang="scss" scoped>
-.minesweeper {
+.minesweeper-wrapper {
   width: 100%;
   height: 100%;
+  padding: 32px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minesweeper-card {
+  background: $card-bg;
+  padding: 28px 36px;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  border: 1px solid $border-color;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 20px;
-  background: #f5f5f5;
+  gap: 20px;
 }
 
 .status-bar {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 8px 20px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  gap: 28px;
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #f1f5f9;
+    border-radius: $border-radius-md;
+    font-size: 15px;
+
+    .value {
+      font-weight: 700;
+      color: $text-primary;
+      min-width: 20px;
+    }
+  }
+
+  .reset-btn {
+    font-size: 28px;
+    border: none;
+    background: #f8fafc;
+    border: 1px solid $border-color;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $shadow-sm;
+    transition: $transition-base;
+
+    &:hover {
+      transform: scale(1.1);
+      background: #fff;
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 }
 
-.status-item {
+.difficulty-tabs {
   display: flex;
-  align-items: center;
-  gap: 4px;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: $border-radius-md;
 
-  .label {
-    font-size: 14px;
-    color: #666;
-  }
+  .tab-btn {
+    padding: 6px 16px;
+    border: none;
+    background: transparent;
+    border-radius: $border-radius-sm;
+    font-size: 13px;
+    font-weight: 500;
+    color: $text-secondary;
+    cursor: pointer;
+    transition: $transition-base;
 
-  .value {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    min-width: 24px;
-    text-align: center;
-  }
-}
+    &:hover {
+      color: $text-primary;
+    }
 
-.reset-btn {
-  font-size: 24px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 4px 12px;
-  border-radius: 6px;
-  transition: background 0.2s;
-
-  &:hover {
-    background: #eee;
+    &.active {
+      background: #fff;
+      color: $primary-color;
+      font-weight: 600;
+      box-shadow: $shadow-sm;
+    }
   }
 }
 
-.game-message {
-  font-size: 18px;
-  font-weight: bold;
-  padding: 8px 20px;
-  border-radius: 8px;
+.game-banner {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: $border-radius-md;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  animation: bannerPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &.won {
-    background: #d4edda;
-    color: #155724;
+    background: #d1fae5;
+    color: #065f46;
   }
 
   &.lost {
-    background: #f8d7da;
-    color: #721c24;
+    background: #fee2e2;
+    color: #991b1b;
   }
 }
 
-.difficulty {
-  display: flex;
-  gap: 8px;
-}
-
-.diff-btn {
-  padding: 6px 14px;
-  border: 1px solid #ddd;
-  background: #fff;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: all 0.2s;
-
-  &:hover {
-    border-color: #4a90d9;
-    color: #4a90d9;
-  }
-
-  &.active {
-    background: #4a90d9;
-    color: #fff;
-    border-color: #4a90d9;
-  }
+.board-container {
+  padding: 12px;
+  background: #e2e8f0;
+  border-radius: $border-radius-md;
 }
 
 .board {
   display: grid;
-  gap: 1px;
-  padding: 8px;
-  background: #c0c0c0;
-  border-radius: 4px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  gap: 3px;
 }
 
 .cell {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
   user-select: none;
-  background: #e0e0e0;
-  border: 2px outset #f0f0f0;
+  background: #f8fafc;
+  border-radius: 6px;
+  box-shadow: 0 2px 0 #cbd5e1;
+  transition: $transition-base;
 
   &:hover:not(.revealed) {
-    background: #d0d0d0;
+    background: #ffffff;
+    transform: translateY(-1px);
   }
 
   &.revealed {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: #cbd5e1;
+    box-shadow: none;
     cursor: default;
   }
 
   &.mine {
-    background: #ffcccc;
+    background: #fca5a5;
   }
 
   &.flagged {
-    background: #ffffcc;
+    background: #fef08a;
   }
 }
 
 .num-1 {
-  color: #0000ff;
+  color: #2563eb;
 }
 .num-2 {
-  color: #008000;
+  color: #059669;
 }
 .num-3 {
-  color: #ff0000;
+  color: #dc2626;
 }
 .num-4 {
-  color: #000080;
+  color: #7c3aed;
 }
 .num-5 {
-  color: #800000;
+  color: #991b1b;
 }
 .num-6 {
-  color: #008080;
+  color: #0891b2;
 }
 .num-7 {
-  color: #000000;
+  color: #1e293b;
 }
 .num-8 {
-  color: #808080;
+  color: #475569;
+}
+
+@keyframes bannerPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 </style>

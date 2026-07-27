@@ -1,9 +1,35 @@
-// 全局 SCSS 主题变量
+// 全局视觉设计系统变量
 
-$primary-color: #1890ff;
-$primary-hover: #40a9ff;
-$bg-color: #f0f2f5;
-$header-bg: #001529;
-$text-color: #333;
-$text-color-secondary: #666;
-$border-color: #d9d9d9;
+// 品牌与状态调色盘
+$primary-color: #4f46e5; // Indigo 渐变主色
+$primary-hover: #6366f1;
+$primary-active: #4338ca;
+$success-color: #10b981;
+$danger-color: #ef4444;
+
+// 背景与表面色
+$bg-color: #f8fafc;
+$card-bg: #ffffff;
+$header-bg: #0f172a; // 深邃 Slate
+
+// 文本颜色
+$text-primary: #0f172a;
+$text-secondary: #64748b;
+$text-muted: #94a3b8;
+
+// 边框与阴影
+$border-color: #e2e8f0;
+$border-radius-sm: 6px;
+$border-radius-md: 12px;
+$border-radius-lg: 20px;
+
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md:
+  0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg:
+  0 10px 25px -5px rgba(0, 0, 0, 0.1),
+  0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+// 动画平滑过渡
+$transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);

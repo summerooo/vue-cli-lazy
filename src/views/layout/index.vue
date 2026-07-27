@@ -1,15 +1,21 @@
 <template>
   <div class="layout-container">
-    <!-- 页头顶栏 -->
+    <!-- 顶部导航栏 -->
     <header class="layout-header">
-      <div class="logo">Vue CLI Lazy</div>
-      <div class="user-info">
-        <span>👤 {{ userStore.username || '未登录' }}</span>
-        <button class="logout-btn" @click="handleLogout">退出登录</button>
+      <div class="brand">
+        <span class="logo-icon">🚀</span>
+        <span class="logo-text">Vue CLI Lazy</span>
+      </div>
+      <div class="user-profile">
+        <div class="user-avatar">{{ userStore.username?.charAt(0).toUpperCase() || 'U' }}</div>
+        <span class="user-name">{{ userStore.username || '未登录' }}</span>
+        <button class="logout-btn" @click="handleLogout">
+          <span>退出登录</span>
+        </button>
       </div>
     </header>
 
-    <!-- 主体区域（原生结合 KeepAlive 缓存） -->
+    <!-- 核心业务区域 -->
     <main class="layout-content">
       <router-view v-slot="{ Component }">
         <keep-alive>
@@ -40,39 +46,78 @@ function handleLogout() {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: $bg-color;
 }
 
 .layout-header {
-  height: 56px;
-  padding: 0 24px;
+  height: 60px;
+  padding: 0 32px;
   background: $header-bg;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: $shadow-md;
+  z-index: 10;
 
-  .logo {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  .user-info {
+  .brand {
     display: flex;
     align-items: center;
-    gap: 16px;
-    font-size: 14px;
+    gap: 10px;
+
+    .logo-icon {
+      font-size: 20px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, $primary-color 0%, $primary-hover 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .user-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
 
     .logout-btn {
-      padding: 4px 12px;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: #fff;
-      border-radius: 4px;
+      margin-left: 8px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      border-radius: $border-radius-sm;
       cursor: pointer;
+      font-size: 13px;
+      transition: $transition-base;
 
       &:hover {
-        border-color: #fff;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(239, 68, 68, 0.2);
+        border-color: rgba(239, 68, 68, 0.4);
+        color: #fca5a5;
       }
     }
   }
