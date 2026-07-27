@@ -14,7 +14,6 @@ export default [
   {
     files: ['**/*.{js,vue}'],
     languageOptions: {
-      // 关键修正：声明浏览器和 Node.js 全局对象（console, document, window, process, FormData 等）
       globals: {
         ...globals.browser,
         ...globals.node,
@@ -25,13 +24,12 @@ export default [
       'vue/multi-word-component-names': 'off',
       'vue/max-attributes-per-line': ['warn', { singleline: 5 }],
       'vue/no-v-html': 'off',
-      'vue/attributes-order': 'off', // 允许 v-if 与 :key 顺序自由
+      'vue/attributes-order': 'off',
 
-      // JS 规则
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      // 严格代码检查规则（触发 npm run lint 报错）
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // 未使用变量直接 error 报错
       'no-console': 'off', // 允许 console 输出
-      'no-debugger': 'warn',
-      'prefer-const': 'warn',
+      'no-debugger': 'error', // 禁用 debugger 调试器
     },
   },
 
