@@ -7,7 +7,6 @@
 <script setup>
 import Minesweeper from '@/components/Minesweeper.vue'
 </script>
-
 <style lang="scss" scoped>
 .home-page {
   width: 100%;
