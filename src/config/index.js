@@ -33,16 +33,16 @@ const environments = {
 
   // 正式/生产环境 (npm run dev:prd / npm run build:prd)
   'dev:prd': {
-    targetApi: 'https://api.hbgxzhny.com/api',
-    targetUser: 'https://api.hbgxzhny.com/user-service',
-    targetOrder: 'https://api.hbgxzhny.com/order-service',
-    targetSocket: 'wss://api.hbgxzhny.com/socket',
+    targetApi: 'https://yourdomain.com/api',
+    targetUser: 'https://yourdomain.com/user-service',
+    targetOrder: 'https://yourdomain.com/order-service',
+    targetSocket: 'wss://yourdomain.com/socket',
   },
   'build:prd': {
-    targetApi: 'https://api.hbgxzhny.com/api',
-    targetUser: 'https://api.hbgxzhny.com/user-service',
-    targetOrder: 'https://api.hbgxzhny.com/order-service',
-    targetSocket: 'wss://api.hbgxzhny.com/socket',
+    targetApi: 'https://yourdomain.com/api',
+    targetUser: 'https://yourdomain.com/user-service',
+    targetOrder: 'https://yourdomain.com/order-service',
+    targetSocket: 'wss://yourdomain.com/socket',
   },
 }
 
